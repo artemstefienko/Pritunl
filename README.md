@@ -136,3 +136,4 @@ ___
 ```
  proxychains4 pritunl start
 ```
+![Scrinshot](https://github.com/artemstefienko/Pritunl/blob/main/Screnshot%20proxy.png)
