@@ -1,0 +1,35 @@
+#! /bin/bash
+# Stefiienko
+# Update the System
+sudo apt update && sudo apt upgrade
+
+# Install tools
+sudo apt install wget vim curl gnupg2 software-properties-common apt-transport-https ca-certificates lsb-release
+
+# Add Pritunl and MongoDB repositories and public keys
+sudo tee /etc/apt/sources.list.d/pritunl.list << EOF
+deb https://repo.pritunl.com/stable/apt jammy main
+EOF
+
+# GPG keys
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7568D9BB55FF9E5287D586017AE645C0CF8E292A
+
+# Add the MongoDB repositories
+echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee /etc/apt/sources.list.d/focal-security.list
+sudo apt update
+sudo apt install libssl1.1
+#-----------------------------------------------------------
+wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+
+# Install Pritunl and MongoDB 
+sudo apt update && sudo apt install pritunl mongodb-org
+
+# Start and enable the Pritunl and MongoDB services
+sudo systemctl start pritunl mongod
+sudo systemctl enable pritunl mongod
+
+
+#sudo pritunl setup-key
+
+#sudo pritunl default-password
