@@ -1,3 +1,5 @@
+![Scrinshot](https://github.com/artemstefienko/Pritunl/blob/main/Pritunl.png)
+
 # Installing Pritunl and mongodb from a script
 ```
     git clone https://github.com/artemstefienko/Pritunl.git
