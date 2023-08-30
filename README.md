@@ -68,7 +68,7 @@ ___
 ___
 
 ___
-##Proxy settings
+##Settings mysql
 >Connect Pritunl to MongoDB by IP address
 ```
     sudo nano /etc/pritunl.conf
